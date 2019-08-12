@@ -46,7 +46,7 @@
     var mqtt;
     var reconnectTimeout = 2000;
     var host="iot.eclipse.org";
-    var port=443;
+    var port=80;
     var row=0;
     var out_msg="";
     var mcount=0;
@@ -86,10 +86,10 @@
     function MQTTconnect() {
         document.getElementById("status_messages").innerHTML ="";
         document.getElementById("status_messages").innerHTML='connecting';
-        mqtt = new Paho.MQTT.Client(host,port,"bb-controller");
+        mqtt = new Paho.MQTT.Client(host,port,"/ws","bb-controller");
         var options = {
             timeout: 3,
-            useSSL: true,
+            useSSL: false,
             cleanSession: false,
             onSuccess: onConnect,
             onFailure: onFailure,
@@ -114,7 +114,7 @@
         document.getElementById("status_messages").innerHTML="Sending message:  " + msg + " on topic: " + topic;
         message = new Paho.MQTT.Message(msg);
         message.destinationName = topic;
-        message.qos = 0;
+        message.qos = 1;
         message.retained = false;
         mqtt.send(message);
         console.log(msg);
