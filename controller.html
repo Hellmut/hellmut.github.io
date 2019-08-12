@@ -45,8 +45,11 @@
     var connected_flag=0    
     var mqtt;
     var reconnectTimeout = 2000;
-    var host="iot.eclipse.org";
-    var port=80;
+    //var host="iot.eclipse.org";
+    //var host="mqtt://mqtt.eclipse.org"
+    var host="broker.hivemq.com"
+    //var port=80;
+    var port = 8000;
     var row=0;
     var out_msg="";
     var mcount=0;
@@ -86,7 +89,8 @@
     function MQTTconnect() {
         document.getElementById("status_messages").innerHTML ="";
         document.getElementById("status_messages").innerHTML='connecting';
-        mqtt = new Paho.MQTT.Client(host,port,"/ws","bb-controller");
+        //mqtt = new Paho.MQTT.Client(host,port,"/ws","bb-controller");
+        mqtt = new Paho.MQTT.Client(host,port,"bb-controller");
         var options = {
             timeout: 3,
             useSSL: false,
