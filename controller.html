@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Websockets Using JavaScript MQTT Client - publish</title>
+        <title>BB Controller</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
         <meta content="utf-8" http-equiv="encoding">
     </head>
     <body>
-        <h1>Websockets MQTT Monitor</h1>
+        <h1>BB Controller</h1>
         <script type = "text/javascript"> </script>
         <div id="status">Connection Status: Not Connected</div>
         <div id="status_messages"></div>
@@ -47,9 +47,11 @@
     var reconnectTimeout = 2000;
     //var host="iot.eclipse.org";
     //var host="mqtt://mqtt.eclipse.org"
-    var host="broker.hivemq.com"
+    //var host="broker.hivemq.com"
+    var host="farmer.cloudmqtt.com"
     //var port=80;
-    var port = 8000;
+    //var port = 8000;
+    var port= 38302;
     var row=0;
     var out_msg="";
     var mcount=0;
@@ -87,18 +89,24 @@
     }
 
     function MQTTconnect() {
+
+        var url_string = window.location.href; //window.location.href
+        var url = new URL(url_string);
+        var urlUserName = url.searchParams.get("username");
+        var urlPassword = url.searchParams.get("password");
+
         document.getElementById("status_messages").innerHTML ="";
         document.getElementById("status_messages").innerHTML='connecting';
         //mqtt = new Paho.MQTT.Client(host,port,"/ws","bb-controller");
         mqtt = new Paho.MQTT.Client(host,port,"bb-controller");
         var options = {
             timeout: 3,
-            useSSL: false,
+            useSSL: true,
             cleanSession: false,
             onSuccess: onConnect,
             onFailure: onFailure,
-            userName: "",
-            password: "",
+            userName: urlUserName,
+            password: urlPassword,
          };
         mqtt.onConnectionLost = onConnectionLost;
         //mqtt.onMessageArrived = onMessageArrived;
