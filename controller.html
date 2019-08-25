@@ -33,6 +33,7 @@
             &nbsp&nbsp&nbsp&nbsp&nbsp
             <input type="button" id="RO" value="RO">
         </p>
+        <iframe id="avframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
     </body>
 </html>
 
@@ -134,12 +135,48 @@
     }
 
     window.onload = function() {
+        var url_string = window.location.href; //window.location.href
+        var url1 = new URL(url_string);
+        var urlUserName1 = url1.searchParams.get("username");
+        document.getElementById('avframe').src = "https://peercalls.com/call/" + urlUserName1;
         MQTTconnect();
     }
 
     window.onunload = function() {
         disconnect();
         alert("Bye now!");
+    }
+
+    window.addEventListener("keydown", checkKeyPressed, false);
+ 
+    function checkKeyPressed(e) {
+        if (e.keyCode == "103") { //7
+            send_message("/hellmut/bb","OF");
+        }
+        if (e.keyCode == "104" || e.keyCode == "38") { //8
+            send_message("/hellmut/bb","FF");
+        }
+        if (e.keyCode == "105") { //9
+            send_message("/hellmut/bb","FO");
+        }
+        if (e.keyCode == "100" || e.keyCode == "37") { //4
+            send_message("/hellmut/bb","RF");
+        }
+        if (e.keyCode == "101") { //5
+            send_message("/hellmut/bb","00");
+        }
+        if (e.keyCode == "102" || e.keyCode == "39") { //6
+            send_message("/hellmut/bb","FR");
+        }
+        if (e.keyCode == "97") { //1
+            send_message("/hellmut/bb","OR");
+        }
+        if (e.keyCode == "98" || e.keyCode == "40") { //2
+            send_message("/hellmut/bb","RR");
+        }
+        if (e.keyCode == "99") { //3
+            send_message("/hellmut/bb","RO");
+        }
     }
 
     document.getElementById("OF").onmouseover = function() {
