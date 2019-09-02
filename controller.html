@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+    <style>
+        div {
+    display: block;
+}
+#wrapper {
+    width: 100%;
+    height: 700px;
+}
+
+#first {
+    float:left;
+    width: 100%;
+    height: 7%;
+    color: red;
+}
+
+#second {
+    float:left;
+    width: 80%;
+    height: 90%;
+}
+
+#third {
+    float:right;
+    width: 20%;
+    height: 90%;
+}
+    </style>
+
     <head>
         <title>BB Controller</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +37,39 @@
         <meta content="utf-8" http-equiv="encoding">
     </head>
     <body>
-        <h1>BB Controller</h1>
-        <script type = "text/javascript"> </script>
-        <div id="status">Connection Status: Not Connected</div>
-        <div id="status_messages"></div>
-        <p>
-            <input type="button" id="OF" value="OF">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="button" id="FF" value="FF">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="button" id="FO" value="FO">
-        </p>
-        <p>
-            <input type="button" id="RF" value="RF">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="button" id="OO" value="OO">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="button" id="FR" value="FR">
-        </p>
-        <p>
-            <input type="button" id="OR" value="OR">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="button" id="RR" value="RR">
-            &nbsp&nbsp&nbsp&nbsp&nbsp
-            <input type="button" id="RO" value="RO">
-        </p>
-        <iframe id="avframe" width="560" height="315" src="" frameborder="0" allow="microphone *; camera *; midi; * encrypted-media *;" allowfullscreen></iframe>
+            <div id="wrapper">
+                    <div id="first">
+                            <script type = "text/javascript"> </script>
+                            <div id="status">Connection Status: Not Connected</div>
+                            <div id="status_messages"></div>
+                    </div>
+                    <div id="second">
+                            <iframe id="avframe" width="100%" height="100%" src="" frameborder="0" allow="microphone *; camera *; midi; * encrypted-media *;" allowfullscreen></iframe>
+                    </div>
+                    <div id="third">
+                            <p>
+                                    <input type="button" id="OF" value="↖">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <input type="button" id="FF" value="↑">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <input type="button" id="FO" value="↗">
+                                </p>
+                                <p>
+                                    <input type="button" id="RF" value="←">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <input type="button" id="OO" value="∅">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <input type="button" id="FR" value="→">
+                                </p>
+                                <p>
+                                    <input type="button" id="OR" value="↙">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <input type="button" id="RR" value="↓">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <input type="button" id="RO" value="↘">
+                                </p>
+                    </div>
+                </div>
     </body>
 </html>
 
